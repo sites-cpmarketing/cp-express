@@ -1,4 +1,3 @@
-import { UserNav } from '@/components/layout/user-nav';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import ShinyText from '@/components/ui/shiny-text';
