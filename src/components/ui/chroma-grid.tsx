@@ -113,7 +113,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
     if (item.action) {
       item.action();
     } else if (item.url) {
-      window.open(item.url, "_blank", "noopener,noreferrer");
+      window.location.href = item.url;
     }
   };
 
@@ -160,10 +160,8 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           <footer className="chroma-info">
             <div className="chroma-title-row">
               <h3 className="name">{c.title}</h3>
-              {c.handle && <span className="handle">{c.handle}</span>}
               <p className="role">{c.subtitle}</p>
             </div>
-            {c.description && <p className="description">{c.description}</p>}
           </footer>
         </article>
       ))}
