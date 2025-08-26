@@ -25,10 +25,6 @@ export interface CardNavProps {
   items: CardNavItem[];
   className?: string;
   ease?: string;
-  baseColor?: string;
-  menuColor?: string;
-  buttonBgColor?: string;
-  buttonTextColor?: string;
 }
 
 const CardNav: React.FC<CardNavProps> = ({
@@ -36,8 +32,6 @@ const CardNav: React.FC<CardNavProps> = ({
   items,
   className = "",
   ease = "power3.out",
-  baseColor = "#fff",
-  menuColor,
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -164,7 +158,6 @@ const CardNav: React.FC<CardNavProps> = ({
       <nav
         ref={navRef}
         className={`card-nav ${isExpanded ? "open" : ""}`}
-        style={{ backgroundColor: baseColor }}
       >
         <div className="card-nav-top">
           <div
@@ -173,7 +166,6 @@ const CardNav: React.FC<CardNavProps> = ({
             role="button"
             aria-label={isExpanded ? "Close menu" : "Open menu"}
             tabIndex={0}
-            style={{ color: menuColor || "#000" }}
           >
             <div className="hamburger-line" />
             <div className="hamburger-line" />

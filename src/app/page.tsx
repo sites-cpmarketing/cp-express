@@ -44,10 +44,6 @@ const Home = () => {
        <CardNav
         logo={<Logo />}
         items={items}
-        baseColor="#0D0716"
-        menuColor="#fff"
-        buttonBgColor="#FE4900"
-        buttonTextColor="#fff"
         ease="power3.out"
       />
       <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
