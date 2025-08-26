@@ -57,25 +57,3 @@ html, body {
     background-color: #111111;
   }
 }
-
-.ripple-grid-background {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    background-image: 
-      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px), 
-      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 30px 30px;
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: hsl(var(--primary) / 0.1);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    box-shadow: 0 0 80px 60px hsl(var(--primary) / 0.1);
-}
