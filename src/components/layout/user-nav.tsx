@@ -1,4 +1,3 @@
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -18,16 +17,14 @@ import { LogoutButton } from "./logout-button"
 
 export async function UserNav() {
   const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  if (error || !data?.user) {
+  if (!user) {
     // This can happen if the session is invalid.
     // The middleware should have already redirected to /login.
     // We can return null or a login button as a fallback.
     return null;
   }
-
-  const user = data.user;
 
   return (
     <DropdownMenu>
