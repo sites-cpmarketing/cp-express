@@ -93,13 +93,13 @@
   max-width: 64px;
   max-height: 64px;
   color: white;
-  opacity: 0;
+  opacity: 0.3;
   transition: opacity 0.3s ease;
 }
 
 .chroma-card:hover .chroma-icon-wrapper svg,
 .chroma-card:hover .chroma-icon-wrapper img {
-    opacity: var(--spotlight-opacity);
+    opacity: 1;
     transition-delay: 0.1s; /* Delay icon appearance slightly */
 }
 
