@@ -85,24 +85,3 @@ html, body {
     z-index: -1;
     opacity: 1;
 }
-
-[overlap-text] {
-	text-transform: uppercase;
-	letter-spacing: -0.1ch;
-	text-shadow: 1px 1px 0.25ch black;
-	display: flex; 
-}
-[overlap-text] > span { 
-    z-index: calc(var(--m, 1) * var(--i, 1));
-    min-width: 0.25ch;
-}
-[overlap-text="front"] { --m:  1 }
-[overlap-text="back" ] { --m: -1 }
-[overlap-text="alter"] > span:nth-child(even){ --m: -1 }
-
-.font-bowlby {
-    font-family: "Bowlby One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: clamp(2rem, 10vw + 1vw, 8rem);
-}
