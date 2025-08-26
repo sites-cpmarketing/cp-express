@@ -3,62 +3,57 @@
 
 import ShinyText from '@/components/ui/shiny-text';
 import { ChromaGrid } from '@/components/ui/chroma-grid';
-import { LayoutDashboard, Calendar, Wand2, Users, BotMessageSquare } from 'lucide-react';
+import { LayoutDashboard, Calendar, Wand2, Users, BotMessageSquare, Mail, Briefcase, FileText } from 'lucide-react';
 import { UserNav } from '@/components/layout/user-nav';
 
 const Home = () => {
   const chromaItems = [
     {
       icon: <LayoutDashboard size={48} />,
-      title: 'Dashboard de Métricas',
+      title: 'Visão Geral',
       subtitle: 'Visualize seus dados e performance.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
       url: '/dashboard',
     },
     {
       icon: <Calendar size={48} />,
       title: 'Calendário',
       subtitle: 'Planeje seus conteúdos e campanhas.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
       url: '/calendar',
     },
     {
       icon: <Users size={48} />,
       title: 'Base de Leads',
       subtitle: 'Crie e gerencie seus formulários.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
       url: '/forms',
     },
     {
       icon: <BotMessageSquare size={48} />,
       title: 'Gerador de Conteúdo',
       subtitle: 'Crie textos e posts com IA.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
       url: '/content-generator',
     },
     {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 5',
-      subtitle: 'Descrição da ferramenta 5.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+      icon: <Mail size={48} />,
+      title: 'Modelos de E-mail',
+      subtitle: 'Navegue por templates prontos.',
+       url: '/templates',
     },
      {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 6',
-      subtitle: 'Descrição da ferramenta 6.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+      icon: <Briefcase size={48} />,
+      title: 'Agendador',
+      subtitle: 'Programe suas postagens sociais.',
+       url: '/scheduler',
     },
     {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 7',
-      subtitle: 'Descrição da ferramenta 7.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+      icon: <FileText size={48} />,
+      title: 'Relatórios',
+      subtitle: 'Exporte relatórios de performance.',
+       url: '/reports',
     },
     {
       icon: <Wand2 size={48} />,
       title: 'Ferramenta 8',
       subtitle: 'Descrição da ferramenta 8.',
-      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
     },
   ];
 
