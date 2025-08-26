@@ -127,10 +127,10 @@
 .chroma-info .role {
   color: #aaa;
   font-size: 0.9rem;
-  height: 0;
+  max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, height 0.3s ease;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
 }
 
 .chroma-card:hover .chroma-info .name {
@@ -138,6 +138,6 @@
 }
 
 .chroma-card:hover .chroma-info .role {
-    height: 2.4em; /* Adjust based on font-size and line-height */
+    max-height: 100px; /* Adjust based on potential max content height */
     opacity: 1;
 }
