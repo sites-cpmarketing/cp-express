@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ToolCard } from "@/components/tool-card";
 import { LayoutDashboard } from "lucide-react";
+import { OverlapText } from "@/components/ui/overlap-text";
 
 export default function Home() {
   return (
     <div className="flex flex-col justify-center h-full p-8">
       <header className="mb-12 text-center">
-        <h1 className="text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-white/60 animate-fade-in-down">BEM VINDO CLIENTE EXPRESS</h1>
+        <OverlapText type="back">BEM VINDO CLIENTE EXPRESS</OverlapText>
       </header>
       <div className="flex items-center justify-center">
         <Link href="/dashboard">
