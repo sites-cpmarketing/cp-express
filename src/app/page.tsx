@@ -4,12 +4,11 @@ import { LayoutDashboard } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center h-[calc(100vh-10rem)] p-8">
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight">CP Express</h1>
-        <p className="text-muted-foreground mt-2">Sua plataforma de marketing integrada.</p>
+    <div className="flex flex-col justify-center h-full p-8">
+      <header className="mb-12 text-center">
+        <h1 className="text-7xl font-black tracking-tight text-white animate-fade-in-down">Bem-vindo</h1>
       </header>
-      <div className="flex items-center justify-start">
+      <div className="flex items-center justify-center">
         <Link href="/dashboard">
           <ToolCard 
             color="blue"
