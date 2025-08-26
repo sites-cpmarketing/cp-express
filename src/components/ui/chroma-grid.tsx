@@ -1,8 +1,7 @@
 
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useRef } from "react";
 import "./chroma-grid.css";
 
 export interface ChromaItem {
@@ -33,34 +32,10 @@ export interface ChromaGridProps {
 export const ChromaGrid: React.FC<ChromaGridProps> = ({
   items,
   className = "",
-  radius = 300,
   columns = 3,
   rows = 2,
 }) => {
-  const rootRef = useRef<HTMLDivElement>(null);
   const data = items || [];
-
-  useEffect(() => {
-    const grid = rootRef.current;
-    if (!grid) return;
-
-    const handleMouseMove = (e: PointerEvent) => {
-      const { clientX, clientY } = e;
-      const rect = grid.getBoundingClientRect();
-      const x = clientX - rect.left;
-      const y = clientY - rect.top;
-      
-      grid.style.setProperty("--x", `${x}px`);
-      grid.style.setProperty("--y", `${y}px`);
-    };
-    
-    grid.addEventListener("pointermove", handleMouseMove);
-
-    return () => {
-      grid.removeEventListener("pointermove", handleMouseMove);
-    };
-  }, []);
-
 
   const handleCardClick = (item: ChromaItem) => {
     if (item.action) {
@@ -81,11 +56,9 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
 
   return (
     <div
-      ref={rootRef}
       className={`chroma-grid ${className}`}
       style={
         {
-          "--r": `${radius}px`,
           "--cols": columns,
           "--rows": rows,
         } as React.CSSProperties
@@ -105,7 +78,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             } as React.CSSProperties
           }
         >
-          <div className="chroma-content-wrapper">
+           <div className="chroma-content-wrapper">
             <div className="chroma-icon-wrapper">
               {c.icon ? c.icon : c.image && <img src={c.image} alt={c.title} loading="lazy" />}
             </div>

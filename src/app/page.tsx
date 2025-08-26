@@ -74,7 +74,6 @@ const Home = () => {
         <div className="w-full max-w-5xl animate-fade-in-down" style={{ animationDelay: '0.6s' }}>
             <ChromaGrid 
               items={chromaItems}
-              radius={150}
               columns={4}
             />
         </div>
