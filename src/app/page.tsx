@@ -48,7 +48,7 @@ const Home = () => {
       />
       <div className="text-center text-white p-8 mt-[200px] md:mt-0">
           <h1 className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
-            CP Express
+            BEM VINDO CLIENTE
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down" style={{ animationDelay: '0.4s' }}>
             Sua plataforma de marketing integrada.
