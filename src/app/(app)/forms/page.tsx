@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,8 +18,8 @@ export default function FormsPage() {
   return (
     <>
       <PageHeader 
-        title="Formulários de Captura de Leads" 
-        description="Crie e gerencie formulários personalizáveis para capturar leads."
+        title="Base de Leads" 
+        description="Gerencie seus formulários e leads capturados."
         actions={
           <Button>
             <PlusCircle className="mr-2 h-4 w-4" />

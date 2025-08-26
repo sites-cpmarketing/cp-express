@@ -24,7 +24,7 @@ const Home = () => {
     },
     {
       icon: <Users size={48} />,
-      title: 'Formulários de Leads',
+      title: 'Base de Leads',
       subtitle: 'Crie e gerencie seus formulários.',
       gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
       url: '/forms',

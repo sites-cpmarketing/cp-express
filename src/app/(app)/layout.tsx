@@ -24,7 +24,7 @@ import { Logo } from '@/components/logo';
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Visão Geral' },
   { href: '/calendar', icon: Calendar, label: 'Calendário' },
-  { href: '/forms', icon: Users, label: 'Formulários de Leads' },
+  { href: '/forms', icon: Users, label: 'Base de Leads' },
   { href: '/content-generator', icon: BotMessageSquare, label: 'Gerador de Conteúdo' },
   { href: '/templates', icon: Mail, label: 'Modelos de E-mail' },
   { href: '/scheduler', icon: Briefcase, label: 'Agendador de Postagens' },
