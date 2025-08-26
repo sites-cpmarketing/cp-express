@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { InteractiveBackground } from '@/components/interactive-background';
 
 export const metadata: Metadata = {
   title: 'CP Express',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased flex flex-col min-h-screen">
+        <InteractiveBackground />
         <div className="relative z-10 flex flex-col flex-1">
           {children}
         </div>

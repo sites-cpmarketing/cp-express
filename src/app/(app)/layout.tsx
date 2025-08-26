@@ -19,7 +19,6 @@ import Link from 'next/link';
 import { LayoutDashboard, Settings, BotMessageSquare, Calendar, PencilRuler, FileText, Mail, Users, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
-import { InteractiveBackground } from '@/components/interactive-background';
 
 
 const navItems = [
@@ -41,7 +40,6 @@ export default function AppLayout({
 
   return (
     <SidebarProvider>
-       <InteractiveBackground />
       <Sidebar>
         <SidebarHeader>
            <div className="p-2 flex justify-center">

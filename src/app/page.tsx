@@ -36,10 +36,9 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
-       <div className="absolute inset-0 w-full h-full bg-black -z-10" />
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <CardNav
-        logo={<Logo className="text-white" />}
+        logo={<Logo />}
         items={items}
         baseColor="#0D0716"
         menuColor="#fff"
