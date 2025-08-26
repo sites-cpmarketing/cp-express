@@ -31,7 +31,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [state, formAction] = useActionState(login, { message: null });
+  const [state, formAction] = useActionState(login, { message: "" });
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -53,11 +53,18 @@ export function LoginForm({
                   type="email"
                   placeholder="m@example.com"
                   required
+                  autoComplete="email"
                 />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Senha</Label>
-                <Input id="password" name="password" type="password" required />
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  autoComplete="current-password"
+                />
                 <Link
                   href="#"
                   className="text-right text-sm underline-offset-4 hover:underline"

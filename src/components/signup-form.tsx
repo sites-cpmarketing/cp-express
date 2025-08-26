@@ -31,7 +31,7 @@ export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [state, formAction] = useActionState(signup, { message: null });
+  const [state, formAction] = useActionState(signup, { message: "" });
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -53,6 +53,7 @@ export function SignUpForm({
                   type="email"
                   placeholder="seu@email.com"
                   required
+                  autoComplete="email"
                 />
               </div>
               <div className="grid gap-2">
@@ -62,6 +63,7 @@ export function SignUpForm({
                   name="password"
                   type="password"
                   required
+                  autoComplete="new-password"
                 />
               </div>
               <div className="grid gap-2">
@@ -71,6 +73,7 @@ export function SignUpForm({
                   name="confirm-password"
                   type="password"
                   required
+                  autoComplete="new-password"
                 />
               </div>
               {state.message && (
