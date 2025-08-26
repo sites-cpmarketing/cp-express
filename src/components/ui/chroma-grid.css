@@ -41,21 +41,19 @@
   min-height: 200px;
   border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #333;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem;
 
-  background: radial-gradient(
-    400px circle at var(--mouse-x) var(--mouse-y),
-    rgba(255, 255, 255, 0.1),
-    transparent 40%
-  ), #000;
+  background: rgba(30, 30, 30, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   
   --spotlight-opacity: 0;
   transition: border-color 0.4s ease-out, --spotlight-opacity 0.4s ease-out;
 }
 
 .chroma-card:hover {
-  border-color: var(--card-border, #666);
+  border-color: var(--card-border, rgba(255, 255, 255, 0.3));
   --spotlight-opacity: 1;
 }
 
