@@ -1,22 +1,12 @@
 "use client";
 
 import BlurText from "@/components/ui/blur-text";
-import { ChromaGrid } from "@/components/ui/chroma-grid";
+import TiltedCard from "@/components/ui/tilted-card";
 import { useRouter } from "next/navigation";
 import { LayoutDashboard } from "lucide-react";
 
 const Home = () => {
   const router = useRouter();
-
-  const dashboardItem = {
-    icon: <LayoutDashboard size={48} />,
-    title: "Acessar o Painel",
-    subtitle: "Clique para começar",
-    description: "Visualize e gerencie suas campanhas de marketing em um só lugar.",
-    borderColor: "#360FC5",
-    gradient: "linear-gradient(145deg, #360FC5, #000)",
-    action: () => router.push('/dashboard'),
-  };
 
   return (
     <div className="flex flex-col items-center justify-center h-full p-8 text-center">
@@ -26,15 +16,21 @@ const Home = () => {
         animateBy="letters"
         className="text-7xl font-black mb-12"
       />
-      <div style={{ height: '320px', width: '320px', position: 'relative' }}>
-        <ChromaGrid 
-          items={[dashboardItem]}
-          radius={200}
-          damping={0.45}
-          fadeOut={0.6}
-          ease="power3.out"
-          columns={1}
-          rows={1}
+      <div onClick={() => router.push('/dashboard')} style={{ cursor: 'pointer' }}>
+        <TiltedCard
+          icon={<LayoutDashboard size={80} color="white" />}
+          captionText="Acessar o Painel"
+          containerHeight="300px"
+          containerWidth="300px"
+          scaleOnHover={1.1}
+          showTooltip={true}
+          displayOverlayContent={true}
+          overlayContent={
+            <div className="flex flex-col items-center justify-center h-full text-white p-4">
+              <h3 className="text-2xl font-bold">Acessar o Painel</h3>
+              <p className="text-sm mt-2">Clique para começar</p>
+            </div>
+          }
         />
       </div>
     </div>
