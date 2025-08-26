@@ -12,7 +12,7 @@ export function InteractiveBackground() {
         gap={15}
         baseColor="#2A2F45"
         activeColor="#FE4900"
-        proximity={180}
+        proximity={200}
         speedTrigger={100}
         shockRadius={250}
         shockStrength={5}
