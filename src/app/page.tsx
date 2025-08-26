@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-center h-full p-8">
       <header className="mb-12 text-center">
-        <h1 className="text-7xl font-black tracking-tight text-white animate-fade-in-down">BEM VINDO CLIENTE EXPRESS</h1>
+        <h1 className="text-7xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-white animate-fade-in-down">BEM VINDO CLIENTE EXPRESS</h1>
       </header>
       <div className="flex items-center justify-center">
         <Link href="/dashboard">
