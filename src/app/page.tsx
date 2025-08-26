@@ -1,26 +1,60 @@
 
 "use client";
 
-import BlurText from "@/components/ui/blur-text";
-import { useRouter } from "next/navigation";
-import { LayoutDashboard } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CardNav, type CardNavItem } from '@/components/ui/card-nav';
+import { Logo } from '@/components/logo';
 
 const Home = () => {
-  const router = useRouter();
+  const items: CardNavItem[] = [
+    {
+      label: "Painel",
+      bgColor: "#1A1A1D",
+      textColor: "#fff",
+      links: [
+        { label: "Visão Geral", href: "/dashboard", ariaLabel: "Visão Geral do Painel" },
+        { label: "Relatórios", href: "/reports", ariaLabel: "Relatórios de Desempenho" }
+      ]
+    },
+    {
+      label: "Ferramentas", 
+      bgColor: "#2C2C34",
+      textColor: "#fff",
+      links: [
+        { label: "Gerador de Conteúdo", href: "/content-generator", ariaLabel: "Gerador de Conteúdo com IA" },
+        { label: "Calendário", href: "/calendar", ariaLabel: "Calendário de Marketing" }
+      ]
+    },
+    {
+      label: "Recursos",
+      bgColor: "#4F4F5A", 
+      textColor: "#fff",
+      links: [
+        { label: "Modelos de E-mail", href: "/templates", ariaLabel: "Modelos de E-mail" },
+        { label: "Agendador", href: "/scheduler", ariaLabel: "Agendador de Postagens" }
+      ]
+    }
+  ];
 
   return (
-    <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-      <BlurText
-        text="BEM VINDO CLIENTE EXPRESS"
-        delay={100}
-        animateBy="letters"
-        className="text-7xl font-black mb-12"
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black">
+       <div className="absolute inset-0 w-full h-full bg-black -z-10" />
+      <CardNav
+        logo={<Logo className="text-white" />}
+        items={items}
+        baseColor="#0D0716"
+        menuColor="#fff"
+        buttonBgColor="#FE4900"
+        buttonTextColor="#fff"
+        ease="power3.out"
       />
-       <Button onClick={() => router.push('/dashboard')} size="lg">
-          <LayoutDashboard className="mr-2" />
-          Acessar o Painel
-        </Button>
+      <div className="text-center text-white p-8 mt-[200px] md:mt-0">
+          <h1 className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
+            CP Express
+          </h1>
+          <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down" style={{ animationDelay: '0.4s' }}>
+            Sua plataforma de marketing integrada.
+          </p>
+      </div>
     </div>
   );
 };

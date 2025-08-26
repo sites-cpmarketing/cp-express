@@ -16,11 +16,20 @@ import {
 import { UserNav } from '@/components/layout/user-nav';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Settings } from 'lucide-react';
+import { LayoutDashboard, Settings, BotMessageSquare, Calendar, PencilRuler, FileText, Mail, Users, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/logo';
+import { InteractiveBackground } from '@/components/interactive-background';
+
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Visão Geral' },
+  { href: '/calendar', icon: Calendar, label: 'Calendário' },
+  { href: '/forms', icon: Users, label: 'Formulários de Leads' },
+  { href: '/content-generator', icon: BotMessageSquare, label: 'Gerador de Conteúdo' },
+  { href: '/templates', icon: Mail, label: 'Modelos de E-mail' },
+  { href: '/scheduler', icon: Briefcase, label: 'Agendador de Postagens' },
+  { href: '/reports', icon: FileText, label: 'Relatórios' },
 ];
 
 export default function AppLayout({
@@ -32,8 +41,12 @@ export default function AppLayout({
 
   return (
     <SidebarProvider>
+       <InteractiveBackground />
       <Sidebar>
         <SidebarHeader>
+           <div className="p-2 flex justify-center">
+                <Logo />
+            </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
