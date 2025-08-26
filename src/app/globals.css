@@ -54,6 +54,6 @@ html, body {
   }
   body {
     @apply text-foreground;
-    background-color: #111111;
+    background-color: #000000;
   }
 }

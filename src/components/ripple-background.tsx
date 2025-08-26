@@ -8,7 +8,7 @@ export function RippleBackground() {
     <div className="fixed inset-0 w-full h-full -z-10">
       <RippleGrid
         enableRainbow={false}
-        gridColor="#2A2F45"
+        gridColor="#FE4900"
         rippleIntensity={0.05}
         gridSize={10}
         gridThickness={15}
