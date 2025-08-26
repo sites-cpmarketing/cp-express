@@ -1,4 +1,5 @@
 
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,9 @@ export default async function ProfilePage() {
     redirect("/login");
   }
 
+  const userName = user?.user_metadata?.full_name || "";
+  const avatarUrl = user?.user_metadata?.avatar_url || "";
+
   return (
     <div className="flex justify-center items-start p-4 sm:p-6 lg:p-8 min-h-screen">
       <Card className="w-full max-w-2xl bg-card/80 backdrop-blur-lg border-white/10">
@@ -26,13 +30,14 @@ export default async function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
+              <AvatarImage src={avatarUrl} />
               <AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
             </Avatar>
             <Button variant="outline">Alterar Foto</Button>
           </div>
           <div className="space-y-2">
             <Label htmlFor="name">Nome</Label>
-            <Input id="name" defaultValue={""} />
+            <Input id="name" defaultValue={userName} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
