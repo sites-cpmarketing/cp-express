@@ -1,7 +1,9 @@
+
 "use client";
 
+import { useFormState, useFormStatus } from "react-dom";
+import { signup } from "@/app/auth/actions";
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,57 +15,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full" aria-disabled={pending}>
+      {pending ? "Criando conta..." : "Criar Conta"}
+    </Button>
+  );
+}
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-  const { toast } = useToast();
-
-  const handleSignUp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("As senhas não correspondem.");
-      return;
-    }
-
-    const supabase = createClient();
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          // This route will be used by Supabase to send the confirmation email.
-          // It should be a route in your app that handles the confirmation.
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
-      });
-      if (error) throw error;
-      
-      toast({
-        title: "Cadastro realizado!",
-        description: "Enviamos um e-mail de confirmação para você. Por favor, verifique sua caixa de entrada.",
-      });
-      router.push("/login");
-
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "Ocorreu um erro durante o cadastro.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [state, formAction] = useFormState(signup, { message: null });
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -75,50 +42,44 @@ export function SignUpForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSignUp}>
+          <form action={formAction}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="seu@email.com"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Senha</Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="confirm-password">Confirmar Senha</Label>
                 <Input
                   id="confirm-password"
+                  name="confirm-password"
                   type="password"
                   required
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-              {error && <p className="text-sm text-destructive">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Criando conta..." : "Criar Conta"}
-              </Button>
+              {state.message && (
+                <p className="text-sm text-destructive">{state.message}</p>
+              )}
+              <SubmitButton />
             </div>
             <div className="mt-4 text-center text-sm">
               Já tem uma conta?{" "}
-              <Link
-                href="/login"
-                className="underline underline-offset-4"
-              >
+              <Link href="/login" className="underline underline-offset-4">
                 Faça login
               </Link>
             </div>

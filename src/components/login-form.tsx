@@ -1,7 +1,9 @@
+
 "use client";
 
+import { useFormState, useFormStatus } from "react-dom";
+import { login } from "@/app/auth/actions";
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -13,43 +15,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" className="w-full" aria-disabled={pending}>
+      {pending ? "Entrando..." : "Entrar"}
+    </Button>
+  );
+}
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const supabase = createClient();
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) throw error;
-      
-      // This will redirect the user to the home page after a successful login
-      // and refresh the server-side state.
-      router.push('/');
-      router.refresh();
-
-    } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [state, formAction] = useFormState(login, { message: null });
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -61,46 +42,36 @@ export function LoginForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleLogin}>
+          <form action={formAction}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="m@example.com"
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Senha</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                 <Link
+                <Input id="password" name="password" type="password" required />
+                <Link
                   href="#"
                   className="text-right text-sm underline-offset-4 hover:underline"
                 >
                   Esqueceu sua senha?
                 </Link>
               </div>
-              {error && <p className="text-sm text-destructive">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Entrando..." : "Entrar"}
-              </Button>
+              {state.message && (
+                <p className="text-sm text-destructive">{state.message}</p>
+              )}
+              <SubmitButton />
             </div>
             <div className="mt-4 text-center text-sm">
               Não tem uma conta?{" "}
-              <Link
-                href="/signup"
-                className="underline underline-offset-4"
-              >
+              <Link href="/signup" className="underline underline-offset-4">
                 Cadastre-se
               </Link>
             </div>
