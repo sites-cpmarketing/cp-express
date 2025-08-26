@@ -12,7 +12,7 @@
   background-clip: text;
   color: transparent;
   display: inline-block;
-  animation: shine var(--shine-speed, 5s) linear infinite;
+  animation: shine var(--shine-speed, 5s) linear;
 }
 
 @keyframes shine {
