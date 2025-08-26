@@ -79,6 +79,10 @@
   box-sizing: border-box;
   background: transparent;
   transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .chroma-img-wrapper img {
@@ -95,15 +99,33 @@
   padding: 0.75rem 1rem;
   color: #fff;
   font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.chroma-title-row {
   display: grid;
   grid-template-columns: 1fr auto;
   row-gap: 0.25rem;
   column-gap: 0.75rem;
+  align-items: baseline;
+}
+
+.chroma-info .name {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .chroma-info .role,
 .chroma-info .handle {
   color: #aaa;
+  font-size: 0.9rem;
+}
+
+.chroma-info .description {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.5rem;
 }
 
 .chroma-overlay {

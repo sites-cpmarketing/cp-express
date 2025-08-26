@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef, useEffect } from "react";
@@ -5,9 +6,11 @@ import { gsap } from "gsap";
 import "./chroma-grid.css";
 
 export interface ChromaItem {
-  image: string;
+  image?: string;
+  icon?: React.ReactNode;
   title: string;
   subtitle: string;
+  description?: string;
   handle?: string;
   location?: string;
   borderColor?: string;
@@ -152,13 +155,15 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           }
         >
           <div className="chroma-img-wrapper">
-            <img src={c.image} alt={c.title} loading="lazy" />
+            {c.icon ? c.icon : c.image && <img src={c.image} alt={c.title} loading="lazy" />}
           </div>
           <footer className="chroma-info">
-            <h3 className="name">{c.title}</h3>
-            {c.handle && <span className="handle">{c.handle}</span>}
-            <p className="role">{c.subtitle}</p>
-            {c.location && <span className="location">{c.location}</span>}
+            <div className="chroma-title-row">
+              <h3 className="name">{c.title}</h3>
+              {c.handle && <span className="handle">{c.handle}</span>}
+              <p className="role">{c.subtitle}</p>
+            </div>
+            {c.description && <p className="description">{c.description}</p>}
           </footer>
         </article>
       ))}

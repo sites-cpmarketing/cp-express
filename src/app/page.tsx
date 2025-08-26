@@ -3,14 +3,16 @@
 import BlurText from "@/components/ui/blur-text";
 import { ChromaGrid } from "@/components/ui/chroma-grid";
 import { useRouter } from "next/navigation";
+import { LayoutDashboard } from "lucide-react";
 
 const Home = () => {
   const router = useRouter();
 
   const dashboardItem = {
-    image: "https://picsum.photos/seed/dashboard/300/300",
+    icon: <LayoutDashboard size={48} />,
     title: "Acessar o Painel",
     subtitle: "Clique para começar",
+    description: "Visualize e gerencie suas campanhas de marketing em um só lugar.",
     borderColor: "#360FC5",
     gradient: "linear-gradient(145deg, #360FC5, #000)",
     action: () => router.push('/dashboard'),
