@@ -38,8 +38,10 @@ export function LoginForm({
         password,
       });
       if (error) throw error;
-      // Força um hard refresh para garantir que o estado do servidor seja atualizado
-      window.location.href = '/'; 
+      
+      router.push('/');
+      router.refresh();
+
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {

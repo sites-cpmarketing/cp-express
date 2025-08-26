@@ -59,17 +59,17 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   const publicUrls = ['/login', '/signup', '/auth/callback'];
+  const isPublicUrl = publicUrls.includes(request.nextUrl.pathname);
 
   // if user is signed in and the current path is a public one, redirect the user to /
-  if (user && publicUrls.includes(request.nextUrl.pathname)) {
+  if (user && isPublicUrl) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
   // if user is not signed in and the current path is not a public one, redirect the user to /login
-  if (!user && !publicUrls.includes(request.nextUrl.pathname)) {
+  if (!user && !isPublicUrl) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
-
 
   return response
 }
