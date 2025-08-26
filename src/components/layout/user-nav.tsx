@@ -21,7 +21,7 @@ export function UserNav({ user }: { user: SupabaseUser }) {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.user_metadata.avatar_url} alt="Avatar" />
+            <AvatarImage src={user?.raw_user_meta_data?.avatar_url} alt="Avatar" />
             <AvatarFallback>{user?.email?.[0].toUpperCase()}</AvatarFallback>
           </Avatar>
         </Button>

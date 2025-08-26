@@ -26,14 +26,14 @@ export default async function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src={user.user_metadata.avatar_url} />
+              <AvatarImage src={user.raw_user_meta_data.avatar_url} />
               <AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
             </Avatar>
             <Button variant="outline">Alterar Foto</Button>
           </div>
           <div className="space-y-2">
             <Label htmlFor="name">Nome</Label>
-            <Input id="name" defaultValue={user.user_metadata.full_name ?? ''} />
+            <Input id="name" defaultValue={user.raw_user_meta_data.full_name ?? ''} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
