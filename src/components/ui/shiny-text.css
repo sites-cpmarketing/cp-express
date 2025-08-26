@@ -1,29 +1,25 @@
-
 .shiny-text {
-  color: #b5b5b5a4; /* Adjust this color to change intensity/style */
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 255, 255, 0) 60%
-  );
-  background-size: 200% 100%;
+  background: linear-gradient(120deg, #ffffff 30%, #a9a9a9 50%, #ffffff 70%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
-  animation: shine var(--shine-speed, 5s) linear;
+  -webkit-text-fill-color: transparent;
+  animation: shine var(--shine-speed, 5s) linear forwards;
 }
 
 @keyframes shine {
-  0% {
-    background-position: 100%;
+  from {
+    background-position: 200% center;
   }
-  100% {
-    background-position: -100%;
+  to {
+    background-position: 0% center;
   }
 }
 
 .shiny-text.disabled {
   animation: none;
+  color: inherit;
+  -webkit-text-fill-color: inherit;
 }
