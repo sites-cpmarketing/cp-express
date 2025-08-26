@@ -54,5 +54,31 @@ export async function signup(prevState: any, formData: FormData) {
     }
   }
 
+  revalidatePath('/login')
   redirect('/auth/confirm')
+}
+
+export async function updateUser(formData: FormData) {
+  const supabase = createClient();
+
+  const name = formData.get('name') as string;
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    return redirect('/login');
+  }
+
+  const { error } = await supabase.auth.updateUser({
+    data: {
+      full_name: name,
+    }
+  });
+
+  if (error) {
+    console.error('Error updating user:', error);
+    // Optionally, redirect to a profile page with an error message
+    return redirect('/profile?error=Could not update user');
+  }
+
+  revalidatePath('/profile');
 }

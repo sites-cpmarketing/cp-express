@@ -1,3 +1,4 @@
+import { updateUser } from "@/app/auth/actions";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,7 @@ export default async function ProfilePage() {
   }
 
   const userEmail = user.email || "";
+  const userName = user.user_metadata.full_name || "";
 
   return (
     <div className="flex justify-center items-start p-4 sm:p-6 lg:p-8 min-h-screen">
@@ -24,22 +26,24 @@ export default async function ProfilePage() {
           <CardTitle>Perfil</CardTitle>
           <CardDescription>Atualize as informações do seu perfil e preferências.</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="flex items-center space-x-4">
-            <Avatar className="h-20 w-20">
-              <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
-            </Avatar>
-            <Button variant="outline" disabled>Alterar Foto</Button>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="name">Nome (use seu email)</Label>
-            <Input id="name" defaultValue={userEmail} disabled />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" defaultValue={user.email} disabled />
-          </div>
-          <Button disabled>Salvar Alterações</Button>
+        <CardContent>
+          <form action={updateUser} className="space-y-6">
+            <div className="flex items-center space-x-4">
+              <Avatar className="h-20 w-20">
+                <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
+              </Avatar>
+              <Button variant="outline" disabled>Alterar Foto</Button>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="name">Nome</Label>
+              <Input id="name" name="name" defaultValue={userName} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" defaultValue={user.email} disabled />
+            </div>
+            <Button type="submit">Salvar Alterações</Button>
+          </form>
         </CardContent>
       </Card>
     </div>

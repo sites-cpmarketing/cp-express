@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { BackgroundEffects } from '@/components/background-effects';
 import { UserNav } from '@/components/layout/user-nav';
 import { createClient } from '@/lib/supabase/server';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -12,14 +12,10 @@ export const metadata: Metadata = {
   description: 'Sua plataforma de marketing integrada.',
 };
 
-const fontSans = Inter({
+const fontSans = Montserrat({
   subsets: ['latin'],
   variable: '--font-sans',
-});
-
-const fontHeadline = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-headline',
+  weight: ['400', '500', '600', '700', '900'],
 });
 
 export default async function RootLayout({
@@ -32,7 +28,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={cn("antialiased flex flex-col min-h-screen font-sans", fontSans.variable, fontHeadline.variable)}>
+      <body className={cn("antialiased flex flex-col min-h-screen font-sans", fontSans.variable)}>
         <BackgroundEffects />
         <div className="relative z-10 flex flex-col flex-1">
           {user && (
