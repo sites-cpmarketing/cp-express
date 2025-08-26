@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <div>
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-black tracking-tight animate-fade-in-down">Bem-vindo ao CP Express</h1>
-        <p className="text-muted-foreground mt-2">Sua plataforma de marketing integrada. Em breve, novas ferramentas.</p>
+    <div className="flex h-[calc(100vh-10rem)] items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-6xl font-black tracking-tighter animate-fade-in-down">Bem-vindo ao CP Express</h1>
+        <p className="text-muted-foreground mt-2 text-lg">Sua plataforma de marketing integrada. Em breve, novas ferramentas.</p>
       </div>
     </div>
   )
