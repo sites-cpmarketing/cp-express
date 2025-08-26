@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import { gsap } from "gsap";
 import "./chroma-grid.css";
 
 export interface ChromaItem {
@@ -50,8 +51,32 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    
     card.style.setProperty("--mouse-x", `${x}px`);
     card.style.setProperty("--mouse-y", `${y}px`);
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    gsap.to(card, {
+      duration: 0.3,
+      rotateX: rotateX,
+      rotateY: rotateY,
+      transformPerspective: 1000,
+      ease: "power2.out",
+    });
+  };
+
+  const handleCardLeave: React.MouseEventHandler<HTMLElement> = (e) => {
+    const card = e.currentTarget as HTMLElement;
+    gsap.to(card, {
+      duration: 0.5,
+      rotateX: 0,
+      rotateY: 0,
+      ease: "elastic.out(1, 0.75)",
+    });
   };
 
   return (
@@ -69,6 +94,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
           key={i}
           className="chroma-card"
           onMouseMove={handleCardMove}
+          onMouseLeave={handleCardLeave}
           onClick={() => handleCardClick(c)}
           style={
             {

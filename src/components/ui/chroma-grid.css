@@ -43,13 +43,14 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem;
+  transition: transform 0.3s ease-out, border-color 0.4s ease-out, --spotlight-opacity 0.4s ease-out;
+  transform-style: preserve-3d;
 
   background: rgba(30, 30, 30, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   
   --spotlight-opacity: 0;
-  transition: border-color 0.4s ease-out, --spotlight-opacity 0.4s ease-out;
 }
 
 .chroma-card:hover {
@@ -105,6 +106,7 @@
   align-items: center;
   text-align: center;
   width: 100%;
+  transform: translateY(0);
   transition: transform 0.4s ease-out;
 }
 
