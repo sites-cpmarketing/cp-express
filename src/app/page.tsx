@@ -3,6 +3,9 @@
 
 import { CardNav, type CardNavItem } from '@/components/ui/card-nav';
 import { Logo } from '@/components/logo';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const Home = () => {
   const items: CardNavItem[] = [
@@ -36,8 +39,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <CardNav
+    <div className="flex flex-col min-h-screen">
+       <CardNav
         logo={<Logo />}
         items={items}
         baseColor="#0D0716"
@@ -46,14 +49,30 @@ const Home = () => {
         buttonTextColor="#fff"
         ease="power3.out"
       />
-      <div className="text-center text-white p-8 mt-[200px] md:mt-0">
-          <h1 className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
-            BEM VINDO CLIENTE
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down" style={{ animationDelay: '0.4s' }}>
-            Sua plataforma de marketing integrada.
-          </p>
-      </div>
+      <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
+        <div className="text-center text-white">
+            <h1 className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
+              BEM VINDO CLIENTE
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down mb-8" style={{ animationDelay: '0.4s' }}>
+              Sua plataforma de marketing integrada.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-down" style={{ animationDelay: '0.6s' }}>
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Link href="/dashboard">
+                  Dashboard de Métricas
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <Link href="/calendar">
+                  Calendário de Conteúdo
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+        </div>
+      </main>
     </div>
   );
 };
