@@ -3,14 +3,13 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
 export async function middleware(request: NextRequest) {
-  const { supabase, response } = {
-    supabase: createClient(),
-    response: NextResponse.next({
-      request: {
-        headers: request.headers,
-      },
-    }),
-  };
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
+
+  const supabase = createClient()
 
   const {
     data: { user },

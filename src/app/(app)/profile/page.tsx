@@ -1,3 +1,4 @@
+
 import { updateUser } from "@/app/auth/actions";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,7 @@ export default async function ProfilePage() {
   }
 
   const userEmail = user.email || "";
-  const userName = user.user_metadata.full_name || "";
+  const userName = user.user_metadata?.full_name || userEmail;
 
   return (
     <div className="flex justify-center items-start p-4 sm:p-6 lg:p-8 min-h-screen">
@@ -30,7 +31,7 @@ export default async function ProfilePage() {
           <form action={updateUser} className="space-y-6">
             <div className="flex items-center space-x-4">
               <Avatar className="h-20 w-20">
-                <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
+                <AvatarFallback>{userName?.[0].toUpperCase()}</AvatarFallback>
               </Avatar>
               <Button variant="outline" disabled>Alterar Foto</Button>
             </div>
