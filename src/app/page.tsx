@@ -5,7 +5,7 @@ import { CardNav, type CardNavItem } from '@/components/ui/card-nav';
 import { Logo } from '@/components/logo';
 import Link from 'next/link';
 import ShinyText from '@/components/ui/shiny-text';
-import ChromaGrid from '@/components/ui/chroma-grid';
+import { ChromaGrid } from '@/components/ui/chroma-grid';
 import { LayoutDashboard, Calendar, Wand2 } from 'lucide-react';
 
 const Home = () => {
