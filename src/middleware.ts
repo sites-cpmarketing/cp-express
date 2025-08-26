@@ -1,18 +1,64 @@
+import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
-  const { supabase, response } = createClient(request)
+  let response = NextResponse.next({
+    request: {
+      headers: request.headers,
+    },
+  })
 
-  // Refresh session if expired - required for Server Components
-  // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-session-with-middleware
-  const { data: { session } } = await supabase.auth.getSession()
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return request.cookies.get(name)?.value
+        },
+        set(name: string, value: string, options) {
+          request.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+          response.cookies.set({
+            name,
+            value,
+            ...options,
+          })
+        },
+        remove(name: string, options) {
+          request.cookies.set({
+            name,
+            value: '',
+            ...options,
+          })
+          response = NextResponse.next({
+            request: {
+              headers: request.headers,
+            },
+          })
+          response.cookies.set({
+            name,
+            value: '',
+            ...options,
+          })
+        },
+      },
+    }
+  )
 
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  
-  const publicUrls = ['/login', '/signup', '/auth/callback'];
+
+  const publicUrls = ['/login', '/signup', '/auth/callback', '/auth/confirm'];
   const isPublicUrl = publicUrls.includes(request.nextUrl.pathname);
 
   // if user is signed in and the current path is a public one, redirect the user to /
@@ -22,7 +68,12 @@ export async function middleware(request: NextRequest) {
 
   // if user is not signed in and the current path is not a public one, redirect the user to /login
   if (!user && !isPublicUrl) {
-    return NextResponse.redirect(new URL('/login', request.url))
+    let from = request.nextUrl.pathname;
+    if (request.nextUrl.search) {
+      from += request.nextUrl.search;
+    }
+
+    return NextResponse.redirect(new URL(`/login?from=${encodeURIComponent(from)}`, request.url))
   }
 
   return response
