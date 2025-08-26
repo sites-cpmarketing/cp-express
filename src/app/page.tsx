@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col min-h-screen relative">
        <header className="absolute top-0 left-0 right-0 p-4 z-50 flex justify-end items-center">
-            <UserNav />
+            <UserNav user={user} />
        </header>
       <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
         <HomeClient />

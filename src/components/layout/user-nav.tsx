@@ -11,21 +11,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { User, Settings, LifeBuoy } from "lucide-react"
-import { createClient } from "@/lib/supabase/server"
 import Link from "next/link"
 import { LogoutButton } from "./logout-button"
+import { type User as SupabaseUser } from "@supabase/supabase-js"
 
-export async function UserNav() {
-  const supabase = createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    // This can happen if the session is invalid.
-    // The middleware should have already redirected to /login.
-    // We can return null or a login button as a fallback.
-    return null;
-  }
-
+export function UserNav({ user }: { user: SupabaseUser }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
