@@ -1,4 +1,3 @@
-
 'use server'
 
 import { revalidatePath } from 'next/cache'
@@ -76,7 +75,6 @@ export async function updateUser(formData: FormData) {
 
   if (error) {
     console.error('Error updating user:', error);
-    // Optionally, redirect to a profile page with an error message
     return redirect('/profile?error=Could not update user');
   }
 
