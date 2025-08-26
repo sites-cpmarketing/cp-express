@@ -1,3 +1,4 @@
+
 "use client";
 
 import BlurText from "@/components/ui/blur-text";
@@ -19,10 +20,10 @@ const Home = () => {
       <div className="flex flex-wrap justify-center lg:justify-start gap-8 w-full max-w-6xl">
         <div onClick={() => router.push('/dashboard')} style={{ cursor: 'pointer' }}>
           <TiltedCard
-            icon={<LayoutDashboard size={60} color="white" />}
+            icon={<LayoutDashboard size={40} color="white" />}
             captionText="Acessar o Painel"
-            containerHeight="250px"
-            containerWidth="250px"
+            containerHeight="200px"
+            containerWidth="200px"
             scaleOnHover={1.1}
             showTooltip={true}
             displayOverlayContent={true}
