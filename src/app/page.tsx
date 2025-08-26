@@ -3,7 +3,7 @@
 
 import ShinyText from '@/components/ui/shiny-text';
 import { ChromaGrid } from '@/components/ui/chroma-grid';
-import { LayoutDashboard, Calendar, Wand2 } from 'lucide-react';
+import { LayoutDashboard, Calendar, Wand2, Users, BotMessageSquare } from 'lucide-react';
 import { UserNav } from '@/components/layout/user-nav';
 
 const Home = () => {
@@ -23,16 +23,18 @@ const Home = () => {
       url: '/calendar',
     },
     {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 3',
-      subtitle: 'Descrição da ferramenta 3.',
+      icon: <Users size={48} />,
+      title: 'Formulários de Leads',
+      subtitle: 'Crie e gerencie seus formulários.',
       gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+      url: '/forms',
     },
     {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 4',
-      subtitle: 'Descrição da ferramenta 4.',
+      icon: <BotMessageSquare size={48} />,
+      title: 'Gerador de Conteúdo',
+      subtitle: 'Crie textos e posts com IA.',
       gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+      url: '/content-generator',
     },
     {
       icon: <Wand2 size={48} />,
@@ -44,6 +46,18 @@ const Home = () => {
       icon: <Wand2 size={48} />,
       title: 'Ferramenta 6',
       subtitle: 'Descrição da ferramenta 6.',
+      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+    },
+    {
+      icon: <Wand2 size={48} />,
+      title: 'Ferramenta 7',
+      subtitle: 'Descrição da ferramenta 7.',
+      gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
+    },
+    {
+      icon: <Wand2 size={48} />,
+      title: 'Ferramenta 8',
+      subtitle: 'Descrição da ferramenta 8.',
       gradient: 'radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.1), transparent 40%), #000',
     },
   ];
