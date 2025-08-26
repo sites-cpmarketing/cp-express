@@ -42,12 +42,17 @@
   overflow: hidden;
   border: 1px solid #333;
   transition: border-color 0.3s ease;
-  background: var(--card-gradient);
   padding: 1rem;
 
   --mouse-x: 50%;
   --mouse-y: 50%;
   --spotlight-color: rgba(254, 73, 0, 0.3);
+
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.1),
+    transparent 40%
+  ), var(--card-gradient);
 }
 
 .chroma-card:hover {
@@ -98,7 +103,7 @@
 
 .chroma-card:hover .chroma-icon-wrapper svg,
 .chroma-card:hover .chroma-icon-wrapper img {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 
