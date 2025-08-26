@@ -57,3 +57,8 @@ html, body {
     background-color: #000000;
   }
 }
+
+.bg-popover {
+  background-color: hsla(var(--popover), 0.8) !important;
+  backdrop-filter: blur(8px);
+}
