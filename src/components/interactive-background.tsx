@@ -1,31 +1,57 @@
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+
+const RIPPLE_SIZE = 50;
 
 export function InteractiveBackground() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rippleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
+    const container = containerRef.current;
+    const ripple = rippleRef.current;
+    if (!container || !ripple) return;
 
-    window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const { top, left } = container.getBoundingClientRect();
+      const x = clientX - left;
+      const y = clientY - top;
+
+      gsap.to(ripple, {
+        x: x,
+        y: y,
+        width: RIPPLE_SIZE,
+        height: RIPPLE_SIZE,
+        ease: 'power4.out',
+        duration: 0.5,
+      });
+    };
+    
+    const handleMouseLeave = () => {
+      gsap.to(ripple, {
+        width: 0,
+        height: 0,
+        ease: 'power4.out',
+        duration: 0.5,
+      });
+    }
+
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
-  const style = {
-    '--cursor-x': `${mousePosition.x}px`,
-    '--cursor-y': `${mousePosition.y}px`,
-  } as React.CSSProperties;
-
   return (
-    <div style={style} className="pointer-events-none fixed inset-0 z-[-1]">
-      <div className="interactive-grid-background" />
-      <div className="spotlight" />
+    <div ref={containerRef} className="ripple-grid-background">
+      <div ref={rippleRef} className="ripple" />
     </div>
   );
 }
