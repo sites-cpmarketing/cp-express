@@ -1,8 +1,6 @@
 
 "use client";
 
-import { Logo } from '@/components/logo';
-import Link from 'next/link';
 import ShinyText from '@/components/ui/shiny-text';
 import { ChromaGrid } from '@/components/ui/chroma-grid';
 import { LayoutDashboard, Calendar, Wand2 } from 'lucide-react';
@@ -58,8 +56,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col min-h-screen relative">
-       <header className="absolute top-0 left-0 right-0 p-4 z-50 flex justify-between items-center">
-        <Logo />
+       <header className="absolute top-0 left-0 right-0 p-4 z-50 flex justify-end items-center">
         <UserNav />
        </header>
       <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
