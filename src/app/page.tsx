@@ -20,7 +20,7 @@ const Home = () => {
       <div className="flex flex-wrap justify-center lg:justify-start gap-8 w-full max-w-6xl">
         <div onClick={() => router.push('/dashboard')} style={{ cursor: 'pointer' }}>
           <TiltedCard
-            icon={<LayoutDashboard size={64} color="white" />}
+            icon={<LayoutDashboard size={40} color="white" />}
             containerHeight="200px"
             containerWidth="200px"
             scaleOnHover={1.1}
@@ -28,7 +28,7 @@ const Home = () => {
             displayOverlayContent={true}
             overlayContent={
               <div className="flex flex-col items-center justify-center h-full text-white p-4">
-                <h3 className="text-xl font-bold tilted-card-title">Acessar o Painel</h3>
+                <h3 className="text-xl font-bold">Acessar o Painel</h3>
               </div>
             }
           />

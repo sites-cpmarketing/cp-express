@@ -50,12 +50,6 @@ export default function TiltedCard({
   const y = useMotionValue(0);
   const rotateX = useSpring(useMotionValue(0), springValues);
   const rotateY = useSpring(useMotionValue(0), springValues);
-
-  // Springs for the overlay content to create parallax
-  const overlayRotateX = useSpring(useMotionValue(0), springValues);
-  const overlayRotateY = useSpring(useMotionValue(0), springValues);
-
-
   const scale = useSpring(1, springValues);
   const opacity = useSpring(0);
   const rotateFigcaption = useSpring(0, {
@@ -79,10 +73,6 @@ export default function TiltedCard({
     rotateX.set(rotationX);
     rotateY.set(rotationY);
 
-    // Apply a slightly different rotation to the overlay for parallax
-    overlayRotateX.set(rotationX * 0.5);
-    overlayRotateY.set(rotationY * 0.5);
-
     x.set(e.clientX - rect.left);
     y.set(e.clientY - rect.top);
 
@@ -101,8 +91,6 @@ export default function TiltedCard({
     scale.set(1);
     rotateX.set(0);
     rotateY.set(0);
-    overlayRotateX.set(0);
-    overlayRotateY.set(0);
     rotateFigcaption.set(0);
   }
 
@@ -151,15 +139,9 @@ export default function TiltedCard({
         </div>
 
         {displayOverlayContent && overlayContent && (
-          <motion.div
-            className="tilted-card-overlay"
-             style={{
-                rotateX: overlayRotateX,
-                rotateY: overlayRotateY,
-            }}
-          >
+          <div className="tilted-card-overlay">
             {overlayContent}
-          </motion.div>
+          </div>
         )}
       </motion.div>
 
