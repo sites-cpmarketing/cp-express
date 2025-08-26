@@ -19,12 +19,12 @@ export async function middleware(request: NextRequest) {
   const publicUrls = ['/login', '/signup', '/auth/callback', '/auth/confirm'];
   const isPublicUrl = publicUrls.includes(request.nextUrl.pathname);
 
-  if (user && isPublicUrl) {
-    return NextResponse.redirect(new URL('/', request.url))
-  }
-
   if (!user && !isPublicUrl) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  if (user && isPublicUrl) {
+    return NextResponse.redirect(new URL('/', request.url))
   }
 
   return response
