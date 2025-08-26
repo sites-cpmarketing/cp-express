@@ -88,7 +88,7 @@ html, body {
 
 [overlap-text] {
 	text-transform: uppercase;
-	letter-spacing: -0.25ch;
+	letter-spacing: -0.1ch;
 	text-shadow: 1px 1px 0.25ch black;
 	display: flex; 
 }
@@ -104,5 +104,5 @@ html, body {
     font-family: "Bowlby One", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: clamp(2rem, 10vw + 1vw, 12rem);
+    font-size: clamp(2rem, 10vw + 1vw, 8rem);
 }
