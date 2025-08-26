@@ -17,8 +17,7 @@ export default async function ProfilePage() {
     redirect("/login");
   }
 
-  const userName = user?.user_metadata?.full_name || user?.email || "";
-  const avatarUrl = user?.user_metadata?.avatar_url || "";
+  const userEmail = user.email || "";
 
   return (
     <div className="flex justify-center items-start p-4 sm:p-6 lg:p-8 min-h-screen">
@@ -30,20 +29,20 @@ export default async function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
-              <AvatarImage src={avatarUrl} />
-              <AvatarFallback>{userName?.[0].toUpperCase()}</AvatarFallback>
+              {/* Removido AvatarImage para não depender de um avatar_url que não existe */}
+              <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
             </Avatar>
-            <Button variant="outline">Alterar Foto</Button>
+            <Button variant="outline" disabled>Alterar Foto</Button>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="name">Nome</Label>
-            <Input id="name" defaultValue={userName} />
+            <Label htmlFor="name">Nome (use seu email)</Label>
+            <Input id="name" defaultValue={userEmail} disabled />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input id="email" type="email" defaultValue={user.email} disabled />
           </div>
-          <Button>Salvar Alterações</Button>
+          <Button disabled>Salvar Alterações</Button>
         </CardContent>
       </Card>
     </div>
