@@ -10,7 +10,7 @@ export function InteractiveBackground() {
       <DotGrid
         dotSize={5}
         gap={15}
-        baseColor="#360FC5"
+        baseColor="#2A2F45"
         activeColor="#FE4900"
         proximity={180}
         speedTrigger={100}
