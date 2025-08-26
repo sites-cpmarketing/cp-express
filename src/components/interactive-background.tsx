@@ -8,17 +8,17 @@ export function InteractiveBackground() {
   return (
     <div className="fixed inset-0 w-full h-full -z-10">
       <DotGrid
-        dotSize={2}
-        gap={25}
+        dotSize={5}
+        gap={15}
         baseColor="#360FC5"
         activeColor="#FE4900"
-        proximity={80}
+        proximity={180}
         speedTrigger={100}
-        shockRadius={200}
-        shockStrength={8}
+        shockRadius={250}
+        shockStrength={5}
         maxSpeed={5000}
         resistance={750}
-        returnDuration={1.5}
+        returnDuration={4}
       />
     </div>
   );
