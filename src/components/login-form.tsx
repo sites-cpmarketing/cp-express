@@ -39,6 +39,7 @@ export function LoginForm({
       });
       if (error) throw error;
       router.push("/");
+      router.refresh();
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : "An error occurred");
     } finally {
@@ -78,7 +79,7 @@ export function LoginForm({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <Link
+                 <Link
                   href="/auth/forgot-password"
                   className="text-right text-sm underline-offset-4 hover:underline"
                 >
