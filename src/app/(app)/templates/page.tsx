@@ -65,7 +65,7 @@ export default function TemplatesPage() {
               </div>
             </CardHeader>
             <CardContent className="flex-grow">
-              <CardTitle className="font-headline text-xl mb-2">{template.title}</CardTitle>
+              <CardTitle className="text-xl mb-2">{template.title}</CardTitle>
               <CardDescription>{template.description}</CardDescription>
             </CardContent>
             <CardFooter>
