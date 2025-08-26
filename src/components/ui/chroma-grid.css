@@ -72,6 +72,10 @@
   z-index: 2;
 }
 
+.chroma-card:hover::before {
+    opacity: 1;
+}
+
 .chroma-content-wrapper {
   position: absolute;
   inset: 0;
@@ -117,9 +121,23 @@
   font-weight: 600;
   font-size: 1.1rem;
   margin: 0;
+  transition: margin 0.3s ease;
 }
 
 .chroma-info .role {
   color: #aaa;
   font-size: 0.9rem;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.chroma-card:hover .chroma-info .name {
+  margin-bottom: 0.25rem;
+}
+
+.chroma-card:hover .chroma-info .role {
+    height: 2.4em; /* Adjust based on font-size and line-height */
+    opacity: 1;
 }
