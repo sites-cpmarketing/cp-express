@@ -19,6 +19,7 @@ export function RippleBackground() {
         gridRotation={0}
         mouseInteraction={true}
         mouseInteractionRadius={0.2}
+        spotlightRadius={0.7}
       />
     </div>
   );

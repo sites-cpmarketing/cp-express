@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -17,6 +18,7 @@ type Props = {
   gridRotation?: number;
   mouseInteraction?: boolean;
   mouseInteractionRadius?: number;
+  spotlightRadius?: number;
 };
 
 const RippleGrid: React.FC<Props> = ({
@@ -32,6 +34,7 @@ const RippleGrid: React.FC<Props> = ({
   gridRotation = 0,
   mouseInteraction = true,
   mouseInteractionRadius = 1,
+  spotlightRadius = 0.5,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mousePositionRef = useRef({ x: 0.5, y: 0.5 });
@@ -89,6 +92,7 @@ uniform bool mouseInteraction;
 uniform vec2 mousePosition;
 uniform float mouseInfluence;
 uniform float mouseInteractionRadius;
+uniform float spotlightRadius;
 varying vec2 vUv;
 
 float pi = 3.141592;
@@ -110,12 +114,12 @@ void main() {
     float dist = length(uv);
     float func = sin(pi * (iTime - dist));
     vec2 rippleUv = uv + uv * func * rippleIntensity;
+    
+    vec2 mouseUv = (mousePosition * 2.0 - 1.0);
+    mouseUv.x *= iResolution.x / iResolution.y;
+    float mouseDist = length(uv - mouseUv);
 
     if (mouseInteraction && mouseInfluence > 0.0) {
-        vec2 mouseUv = (mousePosition * 2.0 - 1.0);
-        mouseUv.x *= iResolution.x / iResolution.y;
-        float mouseDist = length(uv - mouseUv);
-        
         float influence = mouseInfluence * exp(-mouseDist * mouseDist / (mouseInteractionRadius * mouseInteractionRadius));
         
         float mouseWave = sin(pi * (iTime * 2.0 - mouseDist * 3.0)) * influence;
@@ -141,6 +145,12 @@ void main() {
         color += glowIntensity * exp(-gridThickness * 0.5 * smoothB.x);
         color += glowIntensity * exp(-gridThickness * 0.5 * smoothB.y);
     }
+
+    // Spotlight effect
+    float spotlight = smoothstep(spotlightRadius, spotlightRadius - 0.2, mouseDist);
+    float spotlightAmount = 0.3; // How much darker the outside is
+    color *= (1.0 - spotlightAmount) + (spotlight * spotlightAmount);
+
 
     float ddd = exp(-2.0 * clamp(pow(dist, fadeDistance), 0.0, 1.0));
     
@@ -182,6 +192,7 @@ void main() {
       mousePosition: { value: [0.5, 0.5] },
       mouseInfluence: { value: 0 },
       mouseInteractionRadius: { value: mouseInteractionRadius },
+      spotlightRadius: { value: spotlightRadius },
     };
 
     uniformsRef.current = uniforms;
@@ -213,6 +224,7 @@ void main() {
     const handleMouseLeave = () => {
       if (!mouseInteraction) return;
       mouseInfluenceRef.current = 0.0;
+      targetMouseRef.current = { x: 0.5, y: 0.5 };
     };
 
     window.addEventListener("resize", resize);
@@ -296,6 +308,7 @@ void main() {
     uniformsRef.current.gridRotation.value = gridRotation;
     uniformsRef.current.mouseInteraction.value = mouseInteraction;
     uniformsRef.current.mouseInteractionRadius.value = mouseInteractionRadius;
+    uniformsRef.current.spotlightRadius.value = spotlightRadius;
   }, [
     enableRainbow,
     gridColor,
@@ -309,6 +322,7 @@ void main() {
     gridRotation,
     mouseInteraction,
     mouseInteractionRadius,
+    spotlightRadius,
   ]);
 
   return <div ref={containerRef} className="ripple-grid-container" />;
