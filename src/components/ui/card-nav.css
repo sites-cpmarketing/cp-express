@@ -78,9 +78,10 @@
   transform: translate(-50%, -50%);
 }
 
-.card-nav-cta-button {
+.card-nav-cta {
   height: 38px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
 }
 
 .card-nav-content {
@@ -171,7 +172,7 @@
     order: 1;
   }
 
-  .card-nav-cta-button {
+  .card-nav-cta {
     display: none;
   }
 

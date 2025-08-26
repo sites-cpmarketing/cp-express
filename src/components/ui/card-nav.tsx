@@ -6,7 +6,7 @@ import { gsap } from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import "./card-nav.css";
 import Link from "next/link";
-import { Button } from "./button";
+import { UserNav } from "../layout/user-nav";
 
 type CardNavLink = {
   label: string;
@@ -176,9 +176,9 @@ const CardNav: React.FC<CardNavProps> = ({
             {logo}
           </div>
           
-          <Button asChild className="card-nav-cta-button" variant="secondary">
-            <Link href="/dashboard">Meu Perfil</Link>
-          </Button>
+          <div className="card-nav-cta">
+            <UserNav />
+          </div>
 
         </div>
 
