@@ -48,11 +48,15 @@
     400px circle at var(--mouse-x) var(--mouse-y),
     rgba(255, 255, 255, 0.1),
     transparent 40%
-  ), var(--card-gradient);
+  ), #000;
+  
+  --spotlight-opacity: 0;
+  transition: --spotlight-opacity 0.3s ease-out;
 }
 
 .chroma-card:hover {
   border-color: var(--card-border, #666);
+  --spotlight-opacity: 1;
 }
 
 .chroma-card::before {
@@ -63,13 +67,9 @@
       var(--spotlight-color),
       transparent 70%);
   pointer-events: none;
-  opacity: 0;
+  opacity: var(--spotlight-opacity);
   transition: opacity 0.5s ease;
   z-index: 2;
-}
-
-.chroma-card:hover::before {
-  opacity: 1;
 }
 
 .chroma-content-wrapper {
@@ -99,7 +99,8 @@
 
 .chroma-card:hover .chroma-icon-wrapper svg,
 .chroma-card:hover .chroma-icon-wrapper img {
-    opacity: 0.8;
+    opacity: var(--spotlight-opacity);
+    transition-delay: 0.1s; /* Delay icon appearance slightly */
 }
 
 
