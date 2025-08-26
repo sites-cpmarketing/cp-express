@@ -24,11 +24,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!user && !isPublicUrl) {
-    let from = request.nextUrl.pathname;
-    if (request.nextUrl.search) {
-      from += request.nextUrl.search;
-    }
-    return NextResponse.redirect(new URL(`/login?from=${encodeURIComponent(from)}`, request.url))
+    return NextResponse.redirect(new URL('/login', request.url))
   }
 
   return response

@@ -79,4 +79,5 @@ export async function updateUser(formData: FormData) {
   }
 
   revalidatePath('/profile');
+  redirect('/profile')
 }
