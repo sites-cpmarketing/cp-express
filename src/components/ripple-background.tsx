@@ -15,7 +15,7 @@ export function RippleBackground() {
         fadeDistance={1.5}
         vignetteStrength={5}
         glowIntensity={1}
-        opacity={0.65}
+        opacity={0.35}
         gridRotation={0}
         mouseInteraction={true}
         mouseInteractionRadius={0.2}
