@@ -51,7 +51,7 @@ html, body {
     @apply border-border;
   }
   body {
-    @apply bg-transparent text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 
@@ -64,7 +64,7 @@ html, body {
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
-    z-index: -1;
+    z-index: -2;
 }
 
 .spotlight {
