@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        headline: ['var(--font-space-grotesk)'],
+        sans: ['var(--font-sans)', 'sans-serif'],
+        headline: ['var(--font-headline)', 'sans-serif'],
       },
        fontWeight: {
         'normal': '400',

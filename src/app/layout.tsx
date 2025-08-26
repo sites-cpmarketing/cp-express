@@ -4,11 +4,23 @@ import { Toaster } from '@/components/ui/toaster';
 import { BackgroundEffects } from '@/components/background-effects';
 import { UserNav } from '@/components/layout/user-nav';
 import { createClient } from '@/lib/supabase/server';
+import { Inter, Space_Grotesk } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'CP Express',
   description: 'Sua plataforma de marketing integrada.',
 };
+
+const fontSans = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const fontHeadline = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-headline',
+});
 
 export default async function RootLayout({
   children,
@@ -19,13 +31,8 @@ export default async function RootLayout({
   const { data: { user } } = await supabase.auth.getUser();
 
   return (
-    <html lang="en" className="dark">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-      </head>
-      <body className="antialiased flex flex-col min-h-screen font-sans">
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={cn("antialiased flex flex-col min-h-screen font-sans", fontSans.variable, fontHeadline.variable)}>
         <BackgroundEffects />
         <div className="relative z-10 flex flex-col flex-1">
           {user && (
