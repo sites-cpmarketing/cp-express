@@ -2,39 +2,30 @@ import { cn } from '@/lib/utils';
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-2 font-bold", className)}>
       <svg
         width="28"
         height="28"
-        viewBox="0 0 44 44"
+        viewBox="0 0 28 28"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="h-7 w-7"
       >
-        <circle cx="22" cy="22" r="22" fill="url(#paint0_linear_2_36)" />
+        <circle cx="14" cy="14" r="14" fill="#FE4900" />
         <path
-          d="M17.8175 12.864H12.0875L22.0075 32.064L31.9275 12.864H26.1975L22.0075 22.184L17.8175 12.864Z"
-          fill="#0B0E14"
-        />
-        <path
-          d="M26.1975 12.864H31.9275L22.0075 32.064L17.8175 22.184L22.0075 12.864L26.1975 12.864Z"
+          d="M8.06836 10.42V9.5H19.9316V10.42L14 21L8.06836 10.42Z"
           fill="white"
         />
-        <defs>
-          <linearGradient
-            id="paint0_linear_2_36"
-            x1="22"
-            y1="0"
-            x2="22"
-            y2="44"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stopColor="#FE4900" />
-            <stop offset="1" stopColor="#FE4900" stopOpacity="0.8" />
-          </linearGradient>
-        </defs>
+        <path
+          d="M14 21L19.9316 9.5H16.5191L14 15.2867L11.4808 9.5H8.06836L14 21Z"
+          fill="#0B0E14"
+        />
       </svg>
-      <span className="text-lg font-bold">CP Express</span>
+      <div className="flex items-center">
+        <div className="bg-[#0038FF] text-white flex items-center justify-center w-7 h-7 rounded-sm mr-1">
+          <span className="text-sm tracking-tighter">CP</span>
+        </div>
+        <span className="text-lg text-white">Express</span>
+      </div>
     </div>
   );
 }
