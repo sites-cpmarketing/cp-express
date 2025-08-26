@@ -75,7 +75,7 @@ html, body {
     background: radial-gradient(
         circle at var(--cursor-x) var(--cursor-y),
         transparent 10%,
-        hsl(var(--background)) 35%
+        hsl(var(--background)) 15%
     );
     z-index: -1;
     opacity: 1;
