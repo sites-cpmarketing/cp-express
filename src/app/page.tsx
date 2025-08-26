@@ -66,9 +66,9 @@ const Home = () => {
               enableTilt={true}
               enableMagnetism={true}
               clickEffect={true}
-              spotlightRadius={300}
+              spotlightRadius={150}
               particleCount={12}
-              glowColor="132, 0, 255"
+              glowColor="254, 73, 0"
             />
         </div>
       </main>
