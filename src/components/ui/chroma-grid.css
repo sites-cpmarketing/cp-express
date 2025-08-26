@@ -46,7 +46,7 @@
 
   --mouse-x: 50%;
   --mouse-y: 50%;
-  --spotlight-color: rgba(254, 73, 0, 0.3);
+  --spotlight-color: rgba(255, 255, 255, 0.2);
 
   background: radial-gradient(
     400px circle at var(--mouse-x) var(--mouse-y),
@@ -56,7 +56,7 @@
 }
 
 .chroma-card:hover {
-  border-color: var(--card-border);
+  border-color: var(--card-border, #666);
 }
 
 .chroma-card::before {
