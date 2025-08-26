@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import "./chroma-grid.css";
 
 export interface ChromaItem {
@@ -74,6 +74,7 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             {
               "--card-border": c.borderColor || "transparent",
               "--card-gradient": c.gradient,
+              "--spotlight-color": 'rgba(255, 255, 255, 0.2)',
               cursor: c.url || c.action ? "pointer" : "default",
             } as React.CSSProperties
           }

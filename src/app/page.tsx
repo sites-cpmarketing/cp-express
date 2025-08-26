@@ -1,12 +1,35 @@
 
 "use client";
 
+import { useEffect, useRef } from 'react';
 import ShinyText from '@/components/ui/shiny-text';
 import { ChromaGrid } from '@/components/ui/chroma-grid';
 import { LayoutDashboard, Calendar, Wand2 } from 'lucide-react';
 import { UserNav } from '@/components/layout/user-nav';
 
 const Home = () => {
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = grid.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      grid.style.setProperty("--mouse-x", `${x}px`);
+      grid.style.setProperty("--mouse-y", `${y}px`);
+    };
+
+    grid.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      grid.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+
   const chromaItems = [
     {
       icon: <LayoutDashboard size={48} />,
@@ -65,7 +88,7 @@ const Home = () => {
               Sua plataforma de marketing integrada.
             </p>
         </div>
-        <div className="w-full max-w-5xl animate-fade-in-down" style={{ animationDelay: '0.6s' }}>
+        <div ref={gridRef} className="w-full max-w-5xl animate-fade-in-down" style={{ animationDelay: '0.6s' }}>
             <ChromaGrid 
               items={chromaItems}
               columns={4}
