@@ -5,6 +5,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowUpRight } from "lucide-react";
 import "./card-nav.css";
+import Link from "next/link";
 
 type CardNavLink = {
   label: string;
@@ -37,8 +38,6 @@ const CardNav: React.FC<CardNavProps> = ({
   ease = "power3.out",
   baseColor = "#fff",
   menuColor,
-  buttonBgColor,
-  buttonTextColor,
 }) => {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -184,13 +183,6 @@ const CardNav: React.FC<CardNavProps> = ({
             {logo}
           </div>
 
-          <button
-            type="button"
-            className="card-nav-cta-button"
-            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-          >
-            Get Started
-          </button>
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
@@ -204,7 +196,7 @@ const CardNav: React.FC<CardNavProps> = ({
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
                 {item.links?.map((lnk, i) => (
-                  <a
+                  <Link
                     key={`${lnk.label}-${i}`}
                     className="nav-card-link"
                     href={lnk.href}
@@ -215,7 +207,7 @@ const CardNav: React.FC<CardNavProps> = ({
                       aria-hidden="true"
                     />
                     {lnk.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
