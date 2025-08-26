@@ -9,7 +9,7 @@ export default function Home() {
         text="BEM VINDO CLIENTE EXPRESS"
         delay={100}
         animateBy="letters"
-        className="text-6xl font-black mb-8"
+        className="text-8xl font-black mb-8"
       />
       <Link href="/dashboard">
         <Button size="lg">
