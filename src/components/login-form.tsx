@@ -39,6 +39,8 @@ export function LoginForm({
       });
       if (error) throw error;
       
+      // This will redirect the user to the home page after a successful login
+      // and refresh the server-side state.
       router.push('/');
       router.refresh();
 
@@ -82,7 +84,7 @@ export function LoginForm({
                   onChange={(e) => setPassword(e.target.value)}
                 />
                  <Link
-                  href="/auth/forgot-password"
+                  href="#"
                   className="text-right text-sm underline-offset-4 hover:underline"
                 >
                   Esqueceu sua senha?

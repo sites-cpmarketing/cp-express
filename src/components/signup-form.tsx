@@ -45,8 +45,9 @@ export function SignUpForm({
         email,
         password,
         options: {
-          // You can use this to redirect the user to a specific page after they confirm their email.
-          // emailRedirectTo: `${window.location.origin}/`,
+          // This route will be used by Supabase to send the confirmation email.
+          // It should be a route in your app that handles the confirmation.
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
       if (error) throw error;

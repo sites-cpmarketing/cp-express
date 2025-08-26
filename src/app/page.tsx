@@ -63,7 +63,7 @@ export default async function Home() {
             <ShinyText
               text="BEM VINDO CLIENTE"
               speed={5}
-              className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down"
+              className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down font-headline"
               style={{ animationDelay: '0.2s' }}
             />
             <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down" style={{ animationDelay: '0.4s' }}>

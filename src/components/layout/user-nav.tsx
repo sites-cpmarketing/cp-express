@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -23,7 +23,6 @@ export function UserNav({ user }: { user: SupabaseUser }) {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            {/* Removido AvatarImage para não depender de um avatar_url que não existe */}
             <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
           </Avatar>
         </Button>

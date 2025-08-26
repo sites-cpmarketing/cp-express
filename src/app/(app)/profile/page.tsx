@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,7 +27,6 @@ export default async function ProfilePage() {
         <CardContent className="space-y-6">
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
-              {/* Removido AvatarImage para não depender de um avatar_url que não existe */}
               <AvatarFallback>{userEmail?.[0].toUpperCase()}</AvatarFallback>
             </Avatar>
             <Button variant="outline" disabled>Alterar Foto</Button>
