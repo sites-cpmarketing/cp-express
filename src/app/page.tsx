@@ -6,6 +6,7 @@ import { ChromaGrid } from '@/components/ui/chroma-grid';
 import { LayoutDashboard, Calendar, Wand2, Users, BotMessageSquare, Mail, Briefcase, FileText, Settings, LifeBuoy, LogOut, User, LogIn } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { UserNav } from '@/components/layout/user-nav';
 
 const Home = () => {
   const chromaItems = [
@@ -66,12 +67,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen relative">
        <header className="absolute top-0 left-0 right-0 p-4 z-50 flex justify-end items-center">
-            <Button asChild variant="outline">
-                <Link href="/login">
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Login
-                </Link>
-            </Button>
+            <UserNav />
        </header>
       <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
         <div className="text-center text-white mb-12">
