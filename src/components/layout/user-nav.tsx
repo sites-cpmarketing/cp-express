@@ -16,8 +16,8 @@ import { LogoutButton } from "./logout-button"
 import { type User as SupabaseUser } from "@supabase/supabase-js"
 
 export function UserNav({ user }: { user: SupabaseUser }) {
-  const userName = user.user_metadata.full_name || 'Usuário';
-  const avatarUrl = user.user_metadata.avatar_url;
+  const userName = user?.user_metadata?.full_name || user?.email || 'Usuário';
+  const avatarUrl = user?.user_metadata?.avatar_url;
 
   return (
     <DropdownMenu>
@@ -25,7 +25,7 @@ export function UserNav({ user }: { user: SupabaseUser }) {
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
             <AvatarImage src={avatarUrl} alt={userName} />
-            <AvatarFallback>{user?.email?.[0].toUpperCase()}</AvatarFallback>
+            <AvatarFallback>{userName?.[0].toUpperCase()}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

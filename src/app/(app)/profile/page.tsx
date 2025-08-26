@@ -17,7 +17,7 @@ export default async function ProfilePage() {
     redirect("/login");
   }
 
-  const userName = user?.user_metadata?.full_name || "";
+  const userName = user?.user_metadata?.full_name || user?.email || "";
   const avatarUrl = user?.user_metadata?.avatar_url || "";
 
   return (
@@ -31,7 +31,7 @@ export default async function ProfilePage() {
           <div className="flex items-center space-x-4">
             <Avatar className="h-20 w-20">
               <AvatarImage src={avatarUrl} />
-              <AvatarFallback>{user.email?.[0].toUpperCase()}</AvatarFallback>
+              <AvatarFallback>{userName?.[0].toUpperCase()}</AvatarFallback>
             </Avatar>
             <Button variant="outline">Alterar Foto</Button>
           </div>
