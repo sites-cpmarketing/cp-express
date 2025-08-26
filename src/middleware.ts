@@ -58,13 +58,15 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // if user is signed in and the current path is /login, redirect the user to /
-  if (user && request.nextUrl.pathname === '/login') {
+  const publicUrls = ['/login', '/signup', '/auth/callback'];
+
+  // if user is signed in and the current path is a public one, redirect the user to /
+  if (user && publicUrls.includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL('/', request.url))
   }
 
-  // if user is not signed in and the current path is not /login, redirect the user to /login
-  if (!user && request.nextUrl.pathname !== '/login') {
+  // if user is not signed in and the current path is not a public one, redirect the user to /login
+  if (!user && !publicUrls.includes(request.nextUrl.pathname)) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
@@ -79,9 +81,8 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - auth/callback
      * Feel free to modify this pattern to include more paths.
      */
-    '/((?!_next/static|_next/image|favicon.ico|auth/callback|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
