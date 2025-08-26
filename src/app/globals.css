@@ -38,7 +38,7 @@ html, body {
     --grid-color: hsl(0 0% 14.9% / 0.5); /* Cor da grade para tema escuro */
   }
   .dark {
-    --background: 240 4% 10%;
+    --background: 0 0% 2%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -63,7 +63,7 @@ html, body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --grid-color: hsl(0 0% 14.9% / 0.5);
+    --grid-color: hsl(17 100% 50% / 0.2);
   }
 }
 
@@ -96,8 +96,8 @@ html, body {
     background: radial-gradient(
         circle at var(--cursor-x) var(--cursor-y),
         transparent 10%,
-        hsl(var(--background)) 35%
+        hsl(var(--background)) 25%
     );
     z-index: -1;
-    opacity: 0.8;
+    opacity: 1;
 }
