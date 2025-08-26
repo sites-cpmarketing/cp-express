@@ -6,6 +6,7 @@ import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import ShinyText from '@/components/ui/shiny-text';
 
 const Home = () => {
   const items: CardNavItem[] = [
@@ -51,9 +52,12 @@ const Home = () => {
       />
       <main className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
         <div className="text-center text-white">
-            <h1 className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down" style={{ animationDelay: '0.2s' }}>
-              BEM VINDO CLIENTE
-            </h1>
+            <ShinyText 
+              text="BEM VINDO CLIENTE"
+              speed={5}
+              className="text-5xl md:text-7xl font-black mb-4 animate-fade-in-down"
+              style={{ animationDelay: '0.2s' }}
+            />
             <p className="text-lg md:text-xl text-muted-foreground animate-fade-in-down mb-8" style={{ animationDelay: '0.4s' }}>
               Sua plataforma de marketing integrada.
             </p>
