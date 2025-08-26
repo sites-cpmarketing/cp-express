@@ -18,7 +18,7 @@ export function BackgroundEffects() {
         raysOrigin="top-center"
         raysColor="#FFFFFF"
         raysSpeed={0.4}
-        lightSpread={0.8}
+        lightSpread={1.5}
         rayLength={2.0}
         pulsating={false}
         fadeDistance={0.8}
