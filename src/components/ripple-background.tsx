@@ -9,10 +9,10 @@ export function RippleBackground() {
       <RippleGrid
         enableRainbow={false}
         gridColor="#FE4900"
-        rippleIntensity={0.05}
+        rippleIntensity={0}
         gridSize={10}
         gridThickness={15}
-        mouseInteraction={true}
+        mouseInteraction={false}
         mouseInteractionRadius={1.2}
         opacity={0.8}
       />
