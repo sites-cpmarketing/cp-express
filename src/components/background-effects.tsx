@@ -16,11 +16,11 @@ export function BackgroundEffects() {
     >
       <LightRays
         raysOrigin="top-center"
-        raysColor="#FE4900"
+        raysColor="#FFFFFF"
         raysSpeed={0.4}
         lightSpread={0.8}
-        rayLength={1.0}
-        pulsating={true}
+        rayLength={2.0}
+        pulsating={false}
         fadeDistance={0.8}
         followMouse={true}
         mouseInfluence={0.1}
