@@ -146,12 +146,6 @@ void main() {
         color += glowIntensity * exp(-gridThickness * 0.5 * smoothB.y);
     }
 
-    // Spotlight effect
-    float spotlight = smoothstep(spotlightRadius, spotlightRadius - 0.2, mouseDist);
-    float spotlightAmount = 0.3; // How much darker the outside is
-    color *= (1.0 - spotlightAmount) + (spotlight * spotlightAmount);
-
-
     float ddd = exp(-2.0 * clamp(pow(dist, fadeDistance), 0.0, 1.0));
     
     vec2 vignetteCoords = vUv - 0.5;
@@ -170,9 +164,14 @@ void main() {
         t = gridColor;
     }
 
+    // Spotlight effect
+    float spotlight = smoothstep(spotlightRadius, spotlightRadius - 0.2, mouseDist);
+    float spotlightAmount = 0.3; // How much darker the outside is
+    vec3 finalColor = color * t * ((1.0 - spotlightAmount) + (spotlight * spotlightAmount));
+
     float finalFade = ddd * vignette;
-    float alpha = length(color) * finalFade * opacity;
-    gl_FragColor = vec4(color * t * finalFade * opacity, alpha);
+    float alpha = length(finalColor) * finalFade * opacity;
+    gl_FragColor = vec4(finalColor * finalFade * opacity, alpha);
 }`;
 
     const uniforms = {
