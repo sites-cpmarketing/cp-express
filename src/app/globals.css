@@ -64,7 +64,7 @@ html, body {
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
-    z-index: -2;
+    z-index: 0;
 }
 
 .spotlight {
@@ -75,8 +75,8 @@ html, body {
     background: radial-gradient(
         circle at var(--cursor-x) var(--cursor-y),
         transparent 10%,
-        hsl(var(--background)) 50%
+        hsl(var(--background)) 70%
     );
-    z-index: -1;
+    z-index: 0;
     opacity: 1;
 }

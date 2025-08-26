@@ -14,7 +14,6 @@ import {
   SidebarInset,
 } from '@/components/ui/sidebar';
 import { UserNav } from '@/components/layout/user-nav';
-import { InteractiveBackground } from '@/components/interactive-background';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { LayoutDashboard, Settings } from 'lucide-react';
@@ -33,7 +32,6 @@ export default function AppLayout({
 
   return (
     <SidebarProvider>
-      <InteractiveBackground />
       <Sidebar>
         <SidebarHeader>
         </SidebarHeader>
