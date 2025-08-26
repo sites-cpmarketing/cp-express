@@ -26,7 +26,7 @@ const roiData = [
 export default function DashboardPage() {
   return (
     <>
-      <PageHeader title="Painel de Campanha" description="Visualize o desempenho da sua campanha com métricas-chave." />
+      <PageHeader title="Visão Geral" description="Visualize o desempenho da sua campanha com métricas-chave." />
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>

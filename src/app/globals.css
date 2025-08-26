@@ -8,7 +8,7 @@ html, body {
 
 @layer base {
   :root {
-    --background: 0 0% 2%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -42,7 +42,7 @@ html, body {
     --sidebar-ring: 17 100% 50%;
 
     --grid-size: 50px;
-    --grid-color: hsl(17 100% 50% / 0.2);
+    --grid-color: hsl(17 100% 50% / 0.5);
   }
 }
 
@@ -75,7 +75,7 @@ html, body {
     background: radial-gradient(
         circle at var(--cursor-x) var(--cursor-y),
         transparent 10%,
-        hsl(var(--background)) 35%
+        hsl(var(--background)) 50%
     );
     z-index: -1;
     opacity: 1;

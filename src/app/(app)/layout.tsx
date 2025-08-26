@@ -13,22 +13,15 @@ import {
   SidebarMenuButton,
   SidebarInset,
 } from '@/components/ui/sidebar';
-import { Logo } from '@/components/logo';
 import { UserNav } from '@/components/layout/user-nav';
 import { InteractiveBackground } from '@/components/interactive-background';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { LayoutDashboard, Newspaper, Calendar, Settings, PencilRuler, BotMessageSquare, FileText, Share2 } from 'lucide-react';
+import { LayoutDashboard, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { href: '/dashboard', icon: LayoutDashboard, label: 'Painel' },
-  { href: '/content-generator', icon: BotMessageSquare, label: 'Gerador de Conteúdo' },
-  { href: '/scheduler', icon: Calendar, label: 'Agendador' },
-  { href: '/templates', icon: PencilRuler, label: 'Modelos' },
-  { href: '/forms', icon: FileText, label: 'Formulários' },
-  { href: '/calendar', icon: Share2, label: 'Calendário' },
-  { href: '/reports', icon: Newspaper, label: 'Relatórios' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Visão Geral' },
 ];
 
 export default function AppLayout({
@@ -43,7 +36,6 @@ export default function AppLayout({
       <InteractiveBackground />
       <Sidebar>
         <SidebarHeader>
-          <Logo />
         </SidebarHeader>
         <SidebarContent>
           <SidebarMenu>
@@ -51,7 +43,7 @@ export default function AppLayout({
               <SidebarMenuItem key={item.href}>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname === item.href}
+                  isActive={pathname.startsWith(item.href)}
                   tooltip={item.label}
                 >
                   <Link href={item.href}>
