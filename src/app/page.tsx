@@ -52,16 +52,6 @@ const Home = () => {
       subtitle: 'Exporte relatórios de performance.',
        url: '/reports',
     },
-    {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 9',
-      subtitle: 'Descrição da ferramenta 9.',
-    },
-     {
-      icon: <Wand2 size={48} />,
-      title: 'Ferramenta 10',
-      subtitle: 'Descrição da ferramenta 10.',
-    },
   ];
 
   return (
