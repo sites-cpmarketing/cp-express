@@ -43,7 +43,6 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
   ease = "power3.out",
 }) => {
   const rootRef = useRef<HTMLDivElement>(null);
-  const fadeRef = useRef<HTMLDivElement>(null);
   const setX = useRef<SetterFn | null>(null);
   const setY = useRef<SetterFn | null>(null);
   const pos = useRef({ x: 0, y: 0 });
@@ -98,15 +97,12 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
   const handleMove = (e: React.PointerEvent) => {
     const r = rootRef.current!.getBoundingClientRect();
     moveTo(e.clientX - r.left, e.clientY - r.top);
-    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true });
   };
 
   const handleLeave = () => {
-    gsap.to(fadeRef.current, {
-      opacity: 1,
-      duration: fadeOut,
-      overwrite: true,
-    });
+     if(!rootRef.current) return;
+     const { width, height } = rootRef.current.getBoundingClientRect();
+     moveTo(width / 2, height / 2);
   };
 
   const handleCardClick = (item: ChromaItem) => {
@@ -154,19 +150,17 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             } as React.CSSProperties
           }
         >
-          <div className="chroma-img-wrapper">
-            {c.icon ? c.icon : c.image && <img src={c.image} alt={c.title} loading="lazy" />}
+          <div className="chroma-content-wrapper">
+            <div className="chroma-icon-wrapper">
+              {c.icon ? c.icon : c.image && <img src={c.image} alt={c.title} loading="lazy" />}
+            </div>
           </div>
           <footer className="chroma-info">
-            <div className="chroma-title-row">
-              <h3 className="name">{c.title}</h3>
-              <p className="role">{c.subtitle}</p>
-            </div>
+            <h3 className="name">{c.title}</h3>
+            <p className="role">{c.subtitle}</p>
           </footer>
         </article>
       ))}
-      <div className="chroma-overlay" />
-      <div ref={fadeRef} className="chroma-fade" />
     </div>
   );
 };
