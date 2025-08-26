@@ -79,12 +79,10 @@ export const ChromaGrid: React.FC<ChromaGridProps> = ({
             } as React.CSSProperties
           }
         >
-           <div className="chroma-content-wrapper">
-            <div className="chroma-icon-wrapper">
+          <footer className="chroma-info">
+             <div className="chroma-icon-wrapper">
               {c.icon ? c.icon : c.image && <img src={c.image} alt={c.title} loading="lazy" />}
             </div>
-          </div>
-          <footer className="chroma-info">
             <h3 className="name">{c.title}</h3>
             <p className="role">{c.subtitle}</p>
           </footer>

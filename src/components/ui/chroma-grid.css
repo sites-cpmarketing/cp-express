@@ -34,14 +34,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   aspect-ratio: 4 / 3;
   min-height: 200px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid #333;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, justify-content 0.4s ease;
   padding: 1rem;
 
   background: radial-gradient(
@@ -51,12 +52,13 @@
   ), #000;
   
   --spotlight-opacity: 0;
-  transition: --spotlight-opacity 0.3s ease-out;
+  transition: --spotlight-opacity 0.3s ease-out, justify-content 0.4s ease;
 }
 
 .chroma-card:hover {
   border-color: var(--card-border, #666);
   --spotlight-opacity: 1;
+  justify-content: flex-end;
 }
 
 .chroma-card::before {
@@ -76,16 +78,10 @@
     opacity: 1;
 }
 
-.chroma-content-wrapper {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
-  pointer-events: none;
+.chroma-icon-wrapper {
+  margin-bottom: 1rem;
+  text-align: center;
 }
-
 
 .chroma-icon-wrapper img,
 .chroma-icon-wrapper svg {
@@ -93,7 +89,7 @@
   height: 100%;
   object-fit: contain;
   border-radius: 10px;
-  display: block;
+  display: inline-block;
   max-width: 64px;
   max-height: 64px;
   color: white;
@@ -115,6 +111,10 @@
   font-family: system-ui, sans-serif;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  transition: transform 0.4s ease;
 }
 
 .chroma-info .name {
@@ -130,7 +130,7 @@
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: opacity 0.3s ease, max-height 0.3s ease;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
 }
 
 .chroma-card:hover .chroma-info .name {
