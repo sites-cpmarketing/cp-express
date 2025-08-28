@@ -16,7 +16,7 @@ const fontSans = Montserrat({
   weight: ['400', '500', '600', '700', '900'],
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

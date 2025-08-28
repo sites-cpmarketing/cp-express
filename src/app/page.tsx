@@ -1,16 +1,9 @@
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+
 import ShinyText from '@/components/ui/shiny-text';
 import { ChromaGrid } from '@/components/ui/chroma-grid';
 import { LayoutDashboard, Calendar, Users, BotMessageSquare, Mail, Briefcase, FileText } from 'lucide-react';
 
-export default async function Home() {
-  const supabase = createClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
-  if (!user) {
-    redirect('/login');
-  }
+export default function Home() {
 
   const chromaItems = [
     {
