@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { BackgroundEffects } from '@/components/background-effects';
 import { Montserrat } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'CP Express',
